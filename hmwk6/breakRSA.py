@@ -10,4 +10,3 @@ import sys
 from BitVector import *
 
 
-def

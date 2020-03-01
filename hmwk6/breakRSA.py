@@ -46,7 +46,6 @@ def solve_pRoot(p, x): #O(lgn) solution
 			return mid
 	return mid + 1
 
-
 def decryptAllThree(inputF_1, inputF_2, inputF_3, n_file, outF):
     # Opening all the encrypted files adn giving them bvs
     FILEIN_1 = open(inputF_1, 'r')

@@ -259,7 +259,9 @@ def test():
     return
 
 if __name__ == '__main__':
-    if sys.argv[1] == 'test':
+    if len(sys.argv) < 2:
+        print("Need to use 'test' or one of the flags -g, -e, or -d")
+    elif sys.argv[1] == 'test':
         test()
     elif sys.argv[1] == '-g':
         #generate

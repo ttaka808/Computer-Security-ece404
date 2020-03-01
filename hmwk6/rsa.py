@@ -120,7 +120,7 @@ def rsaGenerate(p_file, q_file):
         prime_2 = generator.findPrime()
         bv_holder_2.set_value(intVal=prime_2)
         # Checking the GCD((p-1), e)
-        c = prime_1 - 1
+        c = prime_2 - 1
         b = e
         while b:
             c, b = b, c % b
@@ -130,8 +130,8 @@ def rsaGenerate(p_file, q_file):
         while (not bv_holder_2[0]) and (not bv_holder_2[1]) and (c!=1):
             prime_2 = generator.findPrime()
             bv_holder_2.set_value(intVal=prime_2)
-            # Checking the GCD((p-1), e)
-            c = prime_1 - 1
+            # Checking the GCD((q-1), e)
+            c = prime_2 - 1
             b = e
             while b:
                 c, b = b, c % b
@@ -145,7 +145,7 @@ def rsaGenerate(p_file, q_file):
     p_FILEOUT.close()
     q_FILEOUT.close()
 
-    return
+    return (prime_1, prime_2)
 
 def rsaEncrypt(inputF, pFile, qFile, outF):
     #Reading the p_file
@@ -166,7 +166,7 @@ def rsaEncrypt(inputF, pFile, qFile, outF):
     while (input_bv.more_to_read):
         #Reading 128 bit block, then prepending with zeros to always have 256 bit block
         working_bv = input_bv.read_bits_from_file(128)
-        if working_bv._getsize() > 0 and working_bv._getsize() < 128:
+        if working_bv._getsize() < 128:
             working_bv.pad_from_right(128-working_bv._getsize())
 
         result = exponentiation(message=int(working_bv), exponent=e_as_int, modulus=(int(q_bv) * int(p_bv)))

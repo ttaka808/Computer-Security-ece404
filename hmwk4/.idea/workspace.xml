@@ -4,8 +4,8 @@
     <list default="true" id="ba9fdb66-15cd-48af-a05b-672741b9c6c9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hmwk6/breakRSA.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hmwk6/breakRSA.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../hmwk6/message.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hmwk6/message.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../hmwk6/rsa.py" beforeDir="false" afterPath="$PROJECT_DIR$/../hmwk6/rsa.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hmwk6/super.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../hmwk6/super.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

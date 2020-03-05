@@ -1,9 +1,10 @@
+#!/usr/bin/env python3
+
 #Homework Number: 07
 #Name: Terrence Randall
 #ECN login: randall7
 #Due Date: Mar 4th, 2020
 
-#!/usr/bin/env python3
 import os
 import sys
 import hashlib

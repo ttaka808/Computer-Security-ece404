@@ -110,9 +110,13 @@ char * clientComm(int clntSockfd,int * senderBuffSize_addr, int * optlen_addr){
     // Increment numBytes to get the size of the data that is to be be copied
     // If it's less than or equal to the size of our array, then we can copy it
     numBytes++;
-    if (numBytes <= MAX_DATA_SIZE)
+    if (numBytes <= MAX_DATA_SIZE){
+      printf("We're copying things\n");
       strcpy(str, recvBuff);
-	
+    }
+    else{
+      strcpy(str, "Sent too much data");
+    }
     /* send data to the client */
     if (send(clntSockfd, str, strlen(str), 0) == -1) {
         perror("send failed");
@@ -130,7 +134,10 @@ void secretFunction(){
 }
 
 int DataPrint(char *recvBuff, int numBytes) {
+  if(numBytes <= 60)
     printf("RECEIVED: %s", recvBuff);
-    printf("RECEIVED BYTES: %d\n\n", numBytes);
-    return(0);
+  else
+    printf("Recieved dangerous amount of data\n");
+  printf("RECEIVED BYTES: %d\n\n", numBytes);
+     return(0);
 }

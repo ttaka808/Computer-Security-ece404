@@ -93,19 +93,16 @@ char * clientComm(int clntSockfd,int * senderBuffSize_addr, int * optlen_addr){
     char str[MAX_DATA_SIZE];
     /* recv data from the client */
     getsockopt(clntSockfd, SOL_SOCKET,SO_SNDBUF, senderBuffSize_addr, optlen_addr); /* check sender buffer size */
-    recvBuff = malloc((*senderBuffSize_addr) * sizeof (char));
-	
+    recvBuff = malloc((*senderBuffSize_addr) * sizeof (char));	
     if ((numBytes = recv(clntSockfd, recvBuff, *senderBuffSize_addr, 0)) == -1) {
         perror("recv failed");
         exit(1);
     }
-
     recvBuff[numBytes] = '\0';
     if(DataPrint(recvBuff, numBytes)){
         fprintf(stderr,"ERROR, no way to print out\n");
         exit(1);
     }
-
     // Code to fix buffer overflow issue
     // Increment numBytes to get the size of the data that is to be be copied
     // If it's less than or equal to the size of our array, then we can copy it
@@ -115,7 +112,7 @@ char * clientComm(int clntSockfd,int * senderBuffSize_addr, int * optlen_addr){
       strcpy(str, recvBuff);
     }
     else{
-      strcpy(str, "Sent too much data");
+      strcpy(str, "NO");
     }
     /* send data to the client */
     if (send(clntSockfd, str, strlen(str), 0) == -1) {
@@ -123,8 +120,6 @@ char * clientComm(int clntSockfd,int * senderBuffSize_addr, int * optlen_addr){
         close(clntSockfd);
         exit(1);
     }
-
-
     return recvBuff;
 }
 

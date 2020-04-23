@@ -1,0 +1,49 @@
+##Homework NUmber: 11
+##Name: Terrence Randall
+##ECN login: randall7
+##Due Date: 4/23/2020
+
+SHELL=/bin/sh
+PATH=/usr/local/lib/mh:$PATH
+MAILDIR=$HOME/Mail
+LOGFILE=$HOME/Mail/logfile
+SENDMAIL=/usr/sbin/sendmail
+#VERBOSE=1
+VERBOSE=0
+EOL="
+"
+LOG="$EOL$EOL$EOL"
+LOG="New message log:$EOL"
+LOG=`perl GET_MESSAGE_INDEX`
+LOG="$EOL"
+
+
+## Recipe_a:
+##
+:0 
+* ^From.*[,]
+spamFolder
+
+## Recipe_b:
+##
+:0:
+* ^Subject.*([mM]edication[s]?|[dD]iploma[ls]?|[dD]egree[sS]?|pot[t]?e[e]?ncy|measures|[cC]areer|buy|BUY|[Hh]ostway)
+spamFolder
+
+## Recipe_c:
+##
+:0 B
+* ([Cc]asino | [Tt]arget [pP]rice)
+spamFolder
+
+## Recipe_d:
+##
+:0 HB
+* Content-Type: text/html
+* Content-Type: text/plain
+spamFolder
+
+## Recipe_the_rest
+##
+:0 :
+/var/mail/ece404o0
